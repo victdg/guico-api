@@ -1,0 +1,22 @@
+service: guicoApi-getProducts
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  getStores:
+    handler: src/apiGw.handler
+    events:
+      - httpApi: GET /getProducts
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
